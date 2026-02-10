@@ -150,8 +150,12 @@ Em 2008, observa-se uma reversão pontual, com desempenho do online ligeiramente
 Síntese dos principais aprendizados e possíveis ações de negócio.
 
 - Reforçar investimentos no canal online nas categorias com menos saídas
-- Avaliar estratégias de recuperação da loja física
+- Avaliar estratégias de recuperação do canal online
 - Monitorar continuamente categorias com variação negativa
+
+De forma geral, o projeto demonstra que o canal online atua atualmente como complementar à loja física, mas apresenta oportunidades claras de crescimento, 
+especialmente em categorias com maior participação digital e alto volume de faturamento. Esses insights podem apoiar decisões estratégicas relacionadas à priorização de investimentos, 
+campanhas de marketing digital e expansão do e-commerce.
 
 
 ## 👤 Autor
