@@ -109,8 +109,8 @@ Análise da evolução das vendas ao longo do tempo, comparando os dois canais.
 ![Evolução Loja vs Online](imagens/02_evolucao_loja_vs_online.png)
 
 **Insight principal:**  
-O canal online apresenta crescimento consistente ao longo do período analisado,
-enquanto a loja física mantém estabilidade.
+A loja física concentra a maior parte do faturamento, porém apresenta maior volatilidade ao longo do período analisado.
+O canal online, apesar de representar um volume menor de vendas, demonstra comportamento mais estável, com variações menos acentuadas ao longo do tempo.
 
 ---
 
