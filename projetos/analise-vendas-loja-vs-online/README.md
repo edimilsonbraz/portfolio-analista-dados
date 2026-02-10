@@ -89,66 +89,68 @@ DIVIDE(
 )
 ~~~
 
-## ➡️ Visuais do Dashboard
+## ➡️ Visão Geral do Dashboard
+Esta seção apresenta o dashboard consolidado, permitindo uma visão macro do desempenho
+de vendas por canal, ao longo do tempo e por categoria.
 
-O dashboard foi estruturado em três níveis de análise:
+![Visão Geral do Dashboard](imagens/01_dashboard_visao_geral.png)
 
-### 1️⃣ Visão Executiva (Topo)
+> **O que é possível identificar nesta visão:**
+> - Receita total por canal
+> - Comparação temporal entre loja física e online
+> - Categorias com maior participação nas vendas
+> - Indicadores de crescimento ou retração
 
-* Faturamento Total
+---
 
-* Faturamento Loja
+## 📈 Evolução das Vendas – Loja Física vs Online
+Análise da evolução das vendas ao longo do tempo, comparando os dois canais.
 
-* Faturamento Online
+![Evolução Loja vs Online](imagens/02_evolucao_loja_vs_online.png)
 
-* Participação do Online (%)
+**Insight principal:**  
+O canal online apresenta crescimento consistente ao longo do período analisado,
+enquanto a loja física mantém estabilidade.
 
-➡️ Permite leitura rápida do cenário geral
+---
 
-### 2️⃣ Análise Comparativa
+## 🏆 Top 5 Categorias por Receita
+Identificação das cinco categorias com maior faturamento no período.
 
-* Evolução mensal: Loja vs Online
+![Top 5 Categorias](imagens/03_ranking_categoria.png)
 
-* Ranking de faturamento por categoria
+**Insight principal:**  
+Poucas categorias concentram a maior parte da receita total.
 
-* Performance percentual por categoria
+---
 
-➡️ Identifica diferenças de comportamento entre canais
+## 📦 Mix de Vendas por Canal e Categoria
+Análise da distribuição percentual das vendas entre os canais por categoria.
 
-### 3️⃣ Análise de Tendência e Variação
+![Mix por Categoria](imagens/04_mix_canais_categoria.png)
 
-* Tendência de crescimento mensal
+**Insight principal:**  
+Algumas categorias apresentam maior vocação para o canal online.
 
-* Variação % do online em relação à loja
+---
 
-* Cores semânticas:
+## 📉 Variação Percentual – Online vs Loja Física
+Comparação percentual de desempenho entre os canais.
 
-🟢 Crescimento
+![Variação Percentual](imagens/05_variacao_online_vs_loja.png)
 
-🔴 Queda
+**Insight principal:**  
+O canal online supera a loja física em determinadas categorias estratégicas.
 
-➡️ Apoia decisões estratégicas baseadas em tendência
+---
 
-## ➡️ Principais Insights Encontrados
+## 🧾 Conclusões e Recomendações
+Síntese dos principais aprendizados e possíveis ações de negócio.
 
-* O canal online representa cerca de 20% do faturamento total
+- Reforçar investimentos no canal online nas categorias com menos saídas
+- Avaliar estratégias de recuperação da loja física
+- Monitorar continuamente categorias com variação negativa
 
-* Algumas categorias apresentam maior aderência ao canal online
-
-* Há oscilações na participação do online ao longo dos anos
-
-* O faturamento da loja física ainda lidera, mas o online mostra potencial de crescimento em períodos específicos
-
-
-## ➡️ Próximos Passos (Evoluções Futuras)
-
-* Inclusão de análise por região
-
-* Análise de ticket médio
-
-* Comparação YoY (Year over Year)
-
-* Simulação de cenários
 
 ## 👤 Autor
 
