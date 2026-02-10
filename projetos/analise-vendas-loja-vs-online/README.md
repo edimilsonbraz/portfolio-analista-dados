@@ -38,7 +38,9 @@ A gestão precisa entender:
 3. DAX (medidas e indicadores)
 4. Modelagem Dimensional (Star Schema)
 
-## ➡️ Modelagem de Dados
+## ➡️ Dataset e Modelagem de Dados
+
+[Dataset: Contoso Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=18279)
 
 O modelo foi estruturado em estrela, com:
 
