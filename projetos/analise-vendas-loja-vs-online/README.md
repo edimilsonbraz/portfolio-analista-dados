@@ -130,7 +130,8 @@ Análise da distribuição percentual das vendas entre os canais por categoria.
 ![Mix por Categoria](imagens/04_mix_canais_categoria.png)
 
 **Insight principal:**  
-Algumas categorias apresentam maior vocação para o canal online.
+O canal online possui participação relativamente baixa em todas as categorias, variando aproximadamente entre 17% e 25%, enquanto a loja física domina o faturamento em todo o portfólio.
+Apesar disso, observa-se que categorias como TV and Video e Audio apresentam maior penetração do online, indicando maior propensão digital nesses segmentos.
 
 ---
 
@@ -140,7 +141,8 @@ Comparação percentual de desempenho entre os canais.
 ![Variação Percentual](imagens/05_variacao_online_vs_loja.png)
 
 **Insight principal:**  
-O canal online supera a loja física em determinadas categorias estratégicas.
+O canal online apresentou crescimento relativo superior ao da loja física em 2007 e 2009, com destaque para 2007, quando o online cresceu significativamente mais.
+Em 2008, observa-se uma reversão pontual, com desempenho do online ligeiramente inferior ao da loja, indicando um período de desaceleração ou ajuste.
 
 ---
 
