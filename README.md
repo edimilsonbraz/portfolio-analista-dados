@@ -8,7 +8,11 @@ Olá! Sou Analista de Dados em formação, com foco em Power BI, DAX e análise 
 - Power BI
 - DAX
 - Modelagem Estrela  
-📁 [Ver projeto](projetos/analise-vendas-loja-vs-online)
+
+## PROJETOS:
+📁 [Análise de Vendas loja x online](projetos/analise-vendas-loja-vs-online)
+
+📁 [Análise de Produção](projetos/dashboard-producao-industrial)
 
 *(Outros projetos em desenvolvimento)*
 
