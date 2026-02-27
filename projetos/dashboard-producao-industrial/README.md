@@ -2,6 +2,8 @@
 
 ### 🚀 Dashboard do projeto => <a href="https://app.powerbi.com/groups/me/reports/7e73690d-c95d-438c-83e6-6255aabe94b1/82332fd671e3e58c4808?experience=power-bi" target="_blank">aqui</a>
 
+![Visão Geral do Dashboard](imagens/dashboardProducao.png)
+
 ## Visão Geral
 Este projeto foi desenvolvido como estudo pessoal com foco em prática de modelagem de dados e construção de métricas em DAX no Power BI.
 
@@ -39,10 +41,6 @@ O foco foi construir um dashboard com visão executiva e operacional ao mesmo te
 🔹Produtividade %
 
 🔹Qualidade %
-
-## ➡️ Visão Geral do Dashboard 
-
-![Visão Geral do Dashboard](imagens/dashboardProducao.png)
 
 ## 📊 Estrutura do Dashboard
 🔹 KPIs Executivos
