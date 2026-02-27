@@ -2,6 +2,8 @@
 
 ### Dashboard do projeto => <a href="https://app.powerbi.com/view?r=eyJrIjoiNDdjZGZjMjctNDNkNS00NWYwLThhOGEtZDQ3ZGY1MmM1MzFjIiwidCI6ImIyYjI2MzY2LWRhNmEtNGNkOS1hMzI4LTNmNWI3NzljZGI4MiJ9&pageName=d7bbc0981f7c5fe3cce6" target="_blank">aqui</a>
 
+![Visão Geral do Dashboard](imagens/01_dashboard_visao_geral.png)
+
 ## ➡️ Objetivo do Projeto
 
 💡Analisar e comparar o desempenho de vendas da loja física vs vendas online, identificando:
@@ -78,8 +80,6 @@ O modelo foi estruturado em estrela, com:
 ## ➡️ Visão Geral do Dashboard 1
 Esta seção apresenta o dashboard consolidado, permitindo uma visão macro do desempenho
 de vendas por canal, ao longo do tempo e por categoria.
-
-![Visão Geral do Dashboard](imagens/01_dashboard_visao_geral.png)
 
 > **O que é possível identificar nesta visão:**
 > - Receita total por canal
