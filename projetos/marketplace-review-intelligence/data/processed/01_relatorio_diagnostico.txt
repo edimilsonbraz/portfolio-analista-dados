@@ -1,0 +1,37 @@
+
+MARKETPLACE REVIEW INTELLIGENCE
+Relatório de Diagnóstico — Dataset Bruto
+==================================================
+
+VOLUME DE DADOS
+- Total de registros (unificado): 206,952
+- Arquivo 1: 103,476 registros
+- Arquivo 2: 103,476 registros
+
+QUALIDADE GERAL
+- Duplicatas exatas: 0 (0.00%)
+- Nulos em 'date':        0
+- Nulos em 'rating':      0
+- Nulos em 'content':     0
+- Nulos em 'product_url': 0
+
+RATINGS
+- Distribuição:
+rating
+1      7210
+2      2786
+3      5716
+4     12781
+5    178459
+- Fora do range 1-5: 0
+
+DATAS
+- Data mais antiga:  2015-11-01 00:00:00
+- Data mais recente: 2025-02-19 00:00:00
+- Datas inválidas:   0
+
+REVIEWS (CONTENT)
+- Reviews com menos de 3 palavras: 58,712
+- Reviews vazios: 4,167
+- Média de palavras: 9.4
+==================================================
