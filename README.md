@@ -1,6 +1,6 @@
 # Portfólio – Analista de Dados
 
-Olá! Sou Analista de Dados em formação, com foco em Power BI, DAX e análise de negócios.
+Olá! Sou Analista de Dados em formação, com foco em Power BI, DAX, Python e análise de negócios.
 
 ## 📊 Projetos
 
@@ -14,10 +14,13 @@ Olá! Sou Analista de Dados em formação, com foco em Power BI, DAX e análise 
 
 📁 [Análise de Produção](projetos/dashboard-producao-industrial)
 
+📁 [Marketplace review](projetos/marketplace-review-intelligence)
+
 *(Outros projetos em desenvolvimento)*
 
 ## 🧰 Ferramentas
 - Power BI
 - DAX
 - Power Query
-- SQL 
+- SQL
+- Python
