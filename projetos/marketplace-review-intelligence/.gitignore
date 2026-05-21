@@ -5,3 +5,4 @@ __pycache__/
 data/raw/
 data/processed/reviews_limpos.csv
 data/processed/reviews_enriquecidos.csv
+data/processed/reviews_nlp.csv
