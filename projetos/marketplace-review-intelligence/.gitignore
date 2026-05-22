@@ -3,6 +3,7 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 data/raw/
+data/output/
 data/processed/reviews_limpos.csv
 data/processed/reviews_enriquecidos.csv
 data/processed/reviews_nlp.csv
