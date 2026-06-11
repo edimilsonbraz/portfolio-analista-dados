@@ -2,6 +2,8 @@
 
 > Análise de **202.785 avaliações** de consumidores em produtos de beleza e cuidados capilares no Mercado Livre, do scraping à inteligência de negócio em um dashboard interativo no Power BI.
 
+### 🚀 Dashboard do projeto => <a href="https://app.powerbi.com/view?r=eyJrIjoiMjYxMjE2ODgtMjdlYi00MWMwLWEwNzItNDYwZmJlMjdiZTY1IiwidCI6ImIyYjI2MzY2LWRhNmEtNGNkOS1hMzI4LTNmNWI3NzljZGI4MiJ9" target="_blank">aqui</a>
+
 <p align="center">
   <img src="assets/01_capa_dashboard.png" alt="Visão geral do dashboard Marketplace Review Intelligence" width="100%">
 </p>
