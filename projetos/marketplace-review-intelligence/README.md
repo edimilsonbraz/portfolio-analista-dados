@@ -16,7 +16,7 @@
 - [Stack e ferramentas](#-stack-e-ferramentas)
 - [A pergunta de negócio](#-a-pergunta-de-negócio)
 - [Arquitetura do projeto](#-arquitetura-do-projeto)
-- [Etapa 1 — Coleta de dados](#-etapa-1--coleta-de-dados-web-scraping)
+- [Etapa 1 — Diagnóstico dos dados](#-etapa-1--diagnóstico-e-junção-do-dataset)
 - [Etapa 2 — Limpeza e tratamento](#-etapa-2--limpeza-e-tratamento-python--pandas)
 - [Etapa 3 — Análise de sentimento](#-etapa-3--análise-de-sentimento)
 - [Etapa 4 — Modelagem dimensional](#-etapa-4--modelagem-dimensional-star-schema)
@@ -91,7 +91,7 @@ Dataset Mercado livre (.json)
 
 ---
 
-## 🔍 Etapa 1 — Diagnóstico e Junção do dataset (.json)
+## 🔍 Etapa 1 — Diagnóstico e Junção do dataset
 
 <p align="center">
   <img src="assets/03_scraping_notebook.png" alt="Notebook de web scraping em execução" width="90%">
