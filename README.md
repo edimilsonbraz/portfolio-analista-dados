@@ -16,6 +16,8 @@ Olá! Sou Analista de Dados em formação, com foco em Power BI, DAX, Python e a
 
 📁 [Marketplace review](projetos/marketplace-review-intelligence)
 
+📁 [RFM Simplificado](projetos/rfm-simplificado)
+
 *(Outros projetos em desenvolvimento)*
 
 ## 🧰 Ferramentas
