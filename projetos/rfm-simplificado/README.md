@@ -1,4 +1,4 @@
-# 📊 RFM Simplificado — Segmentação de Clientes por Valor de Compra
+# RFM Simplificado — Segmentação de Clientes por Valor de Compra
 
 > Segmentação de **18.484 clientes** e **R$ 29,36 milhões** em vendas online da AdventureWorks em ALTO, MÉDIO e BAIXO VALOR, para direcionar a campanha de fidelidade do Marketing.
 
@@ -9,13 +9,10 @@
 ![Modelagem](https://img.shields.io/badge/Modelagem-Star%20Schema-3A7CA5)
 ![Status](https://img.shields.io/badge/Status-Concluído-brightgreen)
 
-> **[INSERIR PRINT AQUI — página "Visão Executiva" completa, sem filtros aplicados]**
+> **![Visão Executiva do dashboard RFM Simplificado](assets/01-visao-executiva.png)**
 >
 > **Print 1:** Visão Executiva do dashboard RFM Simplificado
-> **Legenda:** Página de abertura com cinco KPIs da base e a comparação entre % de clientes e % de receita por segmento. É o resumo do projeto em uma tela: mostra que poucos clientes concentram a maior parte do faturamento.
-> **Alt text:** Dashboard do Power BI com cinco cartões de KPI (Total Vendas R$ 29,36 Mi, Qtd Clientes 18 mil, Ticket Médio R$ 1,59 mil, Qtd Pedidos 28 mil, Frequência 1,50), um gráfico de colunas comparando % de clientes e % de receita por segmento e um gráfico de áreas com as vendas mensais por segmento.
 
-<!-- Depois de salvar o print, troque o bloco acima por: ![Visão Executiva do dashboard RFM Simplificado](assets/01-visao-executiva.png) -->
 
 ---
 
@@ -101,13 +98,11 @@ Base: **AdventureWorksDW2022**, um data warehouse de exemplo da Microsoft em mod
 | `DimDate[DateKey]` → `FactInternetSales[DueDateKey]` | 1:* | Único | Inativo |
 | `DimProduct[ProductKey]` → `FactInternetSales[ProductKey]` | 1:* | Único | Ativo |
 
-> **[INSERIR PRINT AQUI — visualização de Modelo do Power BI com as tabelas e linhas de relacionamento]**
+> **![Modelo estrela do projeto no Power BI](assets/02-modelo-dados.png)**
 >
 > **Print 2:** Modelo estrela do projeto no Power BI
-> **Legenda:** A tabela fato no centro, ligada às dimensões por relacionamentos 1:* de sentido único, com duas relações de data inativas. Mostra domínio de modelagem dimensional, base de qualquer dashboard confiável.
-> **Alt text:** Diagrama do modelo de dados no Power BI com FactInternetSales no centro ligada a DimCustomer, DimDate e DimProduct, e uma tabela de medidas separada.
 
-<!-- ![Modelo estrela do projeto no Power BI](assets/02-modelo-dados.png) -->
+
 
 **Decisões de modelagem:**
 - **Tabelas separadas, não a consulta pronta.** Importar a consulta agregada perderia o grão de item de pedido e bloquearia análises por tempo e produto.
@@ -188,13 +183,9 @@ SELECT SUM(SalesAmount) AS TotalVendas
 FROM FactInternetSales;
 ```
 
-> **[INSERIR PRINT AQUI — resultado da consulta principal no SSMS, com as primeiras linhas]**
+> **![Resultado da consulta de segmentação no SQL Server](assets/03-sql-consulta-principal.png)**
 >
 > **Print 3:** Resultado da consulta de segmentação no SQL Server
-> **Legenda:** Uma linha por cliente, com frequência, valor total, última compra e segmento, ordenada pelo valor. Prova que a regra de negócio foi resolvida em SQL antes do Power BI, servindo de gabarito para o DAX.
-> **Alt text:** Grade de resultados do SQL Server Management Studio com colunas CustomerKey, FirstName, LastName, Gender, YearlyIncome, Ocupacao, FrequenciaPedidos, ValorTotal, UltimaCompra e Segmento.
-
-<!-- ![Resultado da consulta de segmentação no SQL Server](assets/03-sql-consulta-principal.png) -->
 
 ---
 
@@ -202,28 +193,24 @@ FROM FactInternetSales;
 
 As medidas ficam numa tabela vazia chamada `# Medidas`. As duas colunas calculadas ficam em `DimCustomer`.
 
-> ℹ️ Os blocos abaixo usam vírgula como separador de argumentos, o padrão internacional. No Power BI configurado em português, o separador é ponto e vírgula (`;`).
 
 ### Resumo
 
 | # | Nome | Tipo | Visual principal |
 |---|---|---|---|
 | 1 | Segmento Cliente | Coluna calculada | Eixos, legendas e filtros de todas as páginas |
-| 2 | Ordem Segmento | Coluna calculada | Ordenação do segmento |
-| 3 | Total Vendas | Medida | Cartão, scatter, tabelas |
-| 4 | Qtd Clientes | Medida | Cartão, perfil por ocupação |
-| 5 | Qtd Pedidos | Medida | Cartão, ranking |
-| 6 | Ticket Medio por Cliente | Medida | Cartão |
-| 7 | Frequencia Media Pedidos | Medida | Cartão, eixo X do scatter |
-| 8 | % Clientes Segmento | Medida | Distribuição por segmento |
-| 9 | % Participacao Segmento | Medida | Distribuição por segmento |
-| 10 | Ranking Cliente | Medida | Tabela Top 10 |
-| 11 | Dias Sem Comprar | Medida | Ranking e listas de ação |
-| 12 | Dias Medio Sem Comprar | Medida | Cartão |
-| 13 | Clientes Alto Valor em Risco | Medida | Cartão "Em Risco" |
-| 14 | Qtd Pedidos Historico | Medida | Lista de recorrentes |
-| 15 | Clientes Recorrentes Baixo Valor | Medida | Cartão "Recorrentes de Baixo Valor" |
-| 16 | Cor Segmento | Medida | Formatação condicional |
+| 2 | Total Vendas | Medida | Cartão, scatter, tabelas |
+| 3 | Qtd Clientes | Medida | Cartão, perfil por ocupação |
+| 4 | Qtd Pedidos | Medida | Cartão, ranking |
+| 5 | Ticket Medio por Cliente | Medida | Cartão |
+| 6 | Frequencia Media Pedidos | Medida | Cartão, eixo X do scatter |
+| 7 | % Clientes Segmento | Medida | Distribuição por segmento |
+| 8 | % Participacao Segmento | Medida | Distribuição por segmento |
+| 9 | Ranking Cliente | Medida | Tabela Top 10 |
+| 10 | Dias Sem Comprar | Medida | Ranking e listas de ação |
+| 11 | Clientes Alto Valor em Risco | Medida | Cartão "Em Risco" |
+| 12 | Clientes Recorrentes Baixo Valor | Medida | Cartão "Recorrentes de Baixo Valor" |
+
 
 ---
 
@@ -245,33 +232,11 @@ RETURN
 
 **O que calcula:** classifica cada cliente pelo valor total que comprou. O `CALCULATE` faz a transição de contexto: transforma o cliente da linha em um filtro sobre a tabela de vendas.
 **Onde é usada:** eixo do gráfico de distribuição, legenda do gráfico de áreas e do scatter, perfil por ocupação, renda por segmento e filtros das listas de ação.
-**Filtros:** é uma coluna, então o valor é fixo pelo histórico completo. Filtrar um ano **não** muda o segmento do cliente.
+
 
 ---
 
-### 2. Ordem Segmento *(coluna calculada em `DimCustomer`)*
-
-```dax
-Ordem Segmento =
-VAR ValorTotalCliente =
-    CALCULATE ( SUM ( FactInternetSales[SalesAmount] ) )
-RETURN
-    SWITCH (
-        TRUE (),
-        ValorTotalCliente >= 10000, 1,
-        ValorTotalCliente >= 3000,  2,
-        ValorTotalCliente < 3000,   3,
-        4
-    )
-```
-
-**O que calcula:** a posição numérica do segmento (1 = ALTO). `Segmento Cliente` é classificada por esta coluna, para aparecer sempre na ordem ALTO → MÉDIO → BAIXO.
-**Onde é usada:** não aparece em visuais; define a ordem do segmento em todos eles.
-**Filtros:** é calculada a partir do valor bruto, e não do texto do segmento, para evitar dependência circular. Os cortes precisam ser mantidos iguais nas duas colunas.
-
----
-
-### 3. Total Vendas
+### 2. Total Vendas
 
 ```dax
 Total Vendas = SUM ( FactInternetSales[SalesAmount] )
@@ -279,11 +244,10 @@ Total Vendas = SUM ( FactInternetSales[SalesAmount] )
 
 **O que calcula:** a soma do valor vendido. É a base de quase todas as outras medidas.
 **Onde é usada:** cartão "Total Vendas" (página 1), eixo Y do scatter (página 2), gráfico de áreas e todas as tabelas de clientes.
-**Filtros:** responde a todos os filtros (ano, segmento, ocupação, cliente). Sem filtros, vale **R$ 29.358.677,22**, conferido com SQL.
 
 ---
 
-### 4. Qtd Clientes
+### 3. Qtd Clientes
 
 ```dax
 Qtd Clientes = DISTINCTCOUNT ( FactInternetSales[CustomerKey] )
@@ -291,11 +255,10 @@ Qtd Clientes = DISTINCTCOUNT ( FactInternetSales[CustomerKey] )
 
 **O que calcula:** quantos clientes distintos compraram no contexto atual.
 **Onde é usada:** cartão "Qtd Clientes" (página 1), gráfico de perfil por ocupação (página 2) e tabela de regras (página 4).
-**Filtros:** conta a partir da tabela fato, então com filtro de ano mostra só quem comprou naquele ano.
 
 ---
 
-### 5. Qtd Pedidos
+### 4. Qtd Pedidos
 
 ```dax
 Qtd Pedidos = DISTINCTCOUNT ( FactInternetSales[SalesOrderNumber] )
@@ -303,11 +266,10 @@ Qtd Pedidos = DISTINCTCOUNT ( FactInternetSales[SalesOrderNumber] )
 
 **O que calcula:** o número de pedidos distintos. Cada pedido tem várias linhas na fato (uma por item), por isso a contagem distinta.
 **Onde é usada:** cartão "Qtd Pedidos" (página 1) e coluna da tabela de ranking (página 3).
-**Filtros:** responde ao filtro de ano. Para análises de fidelidade use a versão histórica (medida 14).
 
 ---
 
-### 6. Ticket Medio por Cliente
+### 5. Ticket Medio por Cliente
 
 ```dax
 Ticket Medio por Cliente =
@@ -316,11 +278,10 @@ DIVIDE ( [Total Vendas], DISTINCTCOUNT ( FactInternetSales[CustomerKey] ) )
 
 **O que calcula:** quanto cada cliente gasta, em média. O `DIVIDE` devolve vazio em vez de erro quando o divisor é zero.
 **Onde é usada:** cartão "Ticket Médio Cliente" (página 1), valor de **R$ 1,59 mil**.
-**Filtros:** com o filtro de segmento, mostra o ticket médio daquele grupo.
 
 ---
 
-### 7. Frequencia Media Pedidos
+### 6. Frequencia Media Pedidos
 
 ```dax
 Frequencia Media Pedidos =
@@ -332,11 +293,10 @@ DIVIDE (
 
 **O que calcula:** quantos pedidos cada cliente faz, em média.
 **Onde é usada:** cartão "Frequência Pedidos" (página 1, valor **1,50**) e eixo X do scatter (página 2), onde cada ponto é um cliente.
-**Filtros:** no scatter, o contexto é um cliente por ponto, então a medida mostra a frequência daquele cliente.
 
 ---
 
-### 8. % Clientes Segmento
+### 7. % Clientes Segmento
 
 ```dax
 % Clientes Segmento =
@@ -351,11 +311,10 @@ DIVIDE (
 
 **O que calcula:** a parcela da base de clientes que pertence a cada segmento.
 **Onde é usada:** gráfico "Distribuição por segmento" (página 1) e tabela de regras (página 4).
-**Filtros:** o `ALL` limpa **as duas** colunas. Como `Segmento Cliente` é classificada por `Ordem Segmento`, o Power BI filtra as duas juntas; limpar só a primeira faz todo percentual dar 100%.
 
 ---
 
-### 9. % Participacao Segmento
+### 8. % Participacao Segmento
 
 ```dax
 % Participacao Segmento =
@@ -370,11 +329,10 @@ DIVIDE (
 
 **O que calcula:** a parcela da receita total gerada por cada segmento.
 **Onde é usada:** ao lado de `% Clientes Segmento` no gráfico "Distribuição por segmento". A comparação entre as duas barras é o principal achado do projeto.
-**Filtros:** mesmo cuidado do `ALL` da medida 8. Filtros de ano continuam valendo no denominador, então o percentual é sobre o total do período filtrado.
 
 ---
 
-### 10. Ranking Cliente
+### 9. Ranking Cliente
 
 ```dax
 Ranking Cliente =
@@ -383,11 +341,10 @@ RANKX ( ALL ( DimCustomer ), [Total Vendas], , DESC )
 
 **O que calcula:** a posição do cliente entre todos os clientes, do maior para o menor valor comprado.
 **Onde é usada:** tabela "Top 10 clientes por valor total de compra" (página 3), com filtro Top N.
-**Filtros:** o `ALL(DimCustomer)` mantém a posição real mesmo com a tabela filtrada. A tabela precisa ter `CustomerKey`: agrupar só por nome soma homônimos e gera empates falsos.
 
 ---
 
-### 11. Dias Sem Comprar
+### 10. Dias Sem Comprar
 
 ```dax
 Dias Sem Comprar =
@@ -401,24 +358,10 @@ RETURN
 
 **O que calcula:** quantos dias se passaram entre a última compra do cliente e a última venda da base.
 **Onde é usada:** coluna com semáforo (verde < 180, âmbar 180–364, vermelho ≥ 365) no ranking e na lista "Alto valor esfriando" (página 3).
-**Filtros:** ignora o filtro de ano de propósito, porque recência olha o histórico. Usar `TODAY()` em uma base que termina em 2014 colocaria todos com mais de 4.000 dias.
 
 ---
 
-### 12. Dias Medio Sem Comprar
-
-```dax
-Dias Medio Sem Comprar =
-AVERAGEX ( DimCustomer, [Dias Sem Comprar] )
-```
-
-**O que calcula:** a recência média dos clientes. O `AVERAGEX` calcula a medida cliente a cliente e depois tira a média.
-**Onde é usada:** cartão "Dias Médio Sem Comprar" (página 3).
-**Filtros:** com o filtro de segmento, mostra a recência média daquele grupo.
-
----
-
-### 13. Clientes Alto Valor em Risco
+### 11. Clientes Alto Valor em Risco
 
 ```dax
 Clientes Alto Valor em Risco =
@@ -433,24 +376,10 @@ COUNTROWS (
 
 **O que calcula:** quantos clientes de alto valor estão há mais de um ano sem comprar.
 **Onde é usada:** cartão "Em Risco" (página 3), com formatação condicional em vermelho para valores acima de zero.
-**Filtros:** o resultado é **0**, e é um resultado real: o cliente de alto valor mais inativo está há 258 dias sem comprar. Em vez de reduzir o corte até aparecer alguém, a página ganhou uma lista de alto valor esfriando (acima de 180 dias).
 
 ---
 
-### 14. Qtd Pedidos Historico
-
-```dax
-Qtd Pedidos Historico =
-CALCULATE ( [Qtd Pedidos], REMOVEFILTERS ( DimDate ) )
-```
-
-**O que calcula:** o total de pedidos do cliente em todo o histórico.
-**Onde é usada:** coluna "Pedidos" da lista "Clientes fiéis de ticket baixo" (página 3).
-**Filtros:** remove o filtro de data, para a lista não esvaziar quando alguém seleciona um ano.
-
----
-
-### 15. Clientes Recorrentes Baixo Valor
+### 12. Clientes Recorrentes Baixo Valor
 
 ```dax
 Clientes Recorrentes Baixo Valor =
@@ -465,25 +394,6 @@ COUNTROWS (
 
 **O que calcula:** clientes de baixo valor que compraram 10 vezes ou mais: fiéis, mas de ticket pequeno.
 **Onde é usada:** cartão "Recorrentes de Baixo Valor" (página 3), valor **35**.
-**Filtros:** usa a medida histórica, então o número não muda com o filtro de ano. O corte de 10 pedidos veio do cluster isolado observado no scatter.
-
----
-
-### 16. Cor Segmento
-
-```dax
-Cor Segmento =
-SWITCH (
-    SELECTEDVALUE ( DimCustomer[Segmento Cliente] ),
-    "ALTO VALOR",  "#0B3C5D",
-    "MEDIO VALOR", "#3A7CA5",
-    "BAIXO VALOR", "#9FB3C8"
-)
-```
-
-**O que calcula:** o código de cor de cada segmento.
-**Onde é usada:** formatação condicional da coluna "Segmento Cliente" nas tabelas (Cor da fonte → Valor do campo).
-**Filtros:** só devolve cor quando há um segmento no contexto da linha.
 
 ---
 
@@ -511,41 +421,30 @@ O Print 1, no topo deste README, mostra esta página.
 
 ### Página 2 — Segmentação
 
-> **[INSERIR PRINT AQUI — página "Segmentação" completa, com o scatter e as linhas de referência]**
+> **![Scatter de frequência × valor total por cliente](assets/04-segmentacao.png)**
 >
 > **Print 4:** Scatter de frequência × valor total por cliente
-> **Legenda:** Cada ponto é um cliente, colorido pelo segmento, com linhas tracejadas em R$ 3 mil e R$ 10 mil marcando as fronteiras. Revela à direita um grupo de clientes muito frequentes e de baixo valor, um achado que não estava no escopo original.
-> **Alt text:** Gráfico de dispersão com frequência de pedidos no eixo X e valor total no eixo Y, pontos em três tons de azul por segmento e duas linhas horizontais tracejadas; à direita, gráficos de barras do perfil por ocupação e da renda média por segmento.
 
-<!-- ![Scatter de frequência × valor total por cliente](assets/04-segmentacao.png) -->
 
 ### Página 3 — Clientes e Ações
 
-> **[INSERIR PRINT AQUI — página "Clientes e Ações" completa, com o ranking e as duas listas]**
+> **![Ranking de clientes e listas de ação](assets/05-clientes-acoes.png)**
 >
 > **Print 5:** Ranking de clientes e listas de ação
-> **Legenda:** Cartões de alerta, o Top 10 de clientes com recência em semáforo e duas listas prontas para o Marketing agir. É a página que transforma a análise em recomendação.
-> **Alt text:** Página do Power BI com quatro cartões (Clientes Alto Valor 29, Em Risco 0, Recorrentes de Baixo Valor 35, Dias Médio Sem Comprar 189), uma tabela com os 10 maiores clientes e duas tabelas menores: clientes de alto valor esfriando e clientes fiéis de ticket baixo.
 
-<!-- ![Ranking de clientes e listas de ação](assets/05-clientes-acoes.png) -->
 
-> **[INSERIR PRINT AQUI — recorte da tabela de ranking mostrando o semáforo em "Dias Sem Comprar" e as barras de dados]**
+
+> **![Formatação condicional da tabela de ranking](assets/06-detalhe-formatacao.png)**
 >
 > **Print 6:** Formatação condicional da tabela de ranking
-> **Legenda:** Recência em verde, âmbar ou vermelho com ícones, e barras de dados no valor total. Mostra o cuidado com leitura rápida e acessibilidade (o alerta não depende só da cor).
-> **Alt text:** Recorte de tabela com a coluna Dias Sem Comprar colorida por faixa e a coluna Total Vendas com barras horizontais azuis.
 
-<!-- ![Formatação condicional da tabela de ranking](assets/06-detalhe-formatacao.png) -->
+<!--  -->
 
 ### Página 4 — Sobre o Projeto
 
-> **[INSERIR PRINT AQUI — página "Sobre o Projeto" completa]**
+> **![Documentação dentro do dashboard](assets/07-sobre-projeto.png)**
 >
 > **Print 7:** Documentação dentro do dashboard
-> **Legenda:** Regras de segmentação em uma tabela ligada ao modelo, principais achados, limitações e fontes. Mostra que o relatório se explica sozinho para quem não participou do projeto.
-> **Alt text:** Página do Power BI com uma tabela das regras de cada segmento e blocos de texto sobre objetivo, achados, limitações e ferramentas.
-
-<!-- ![Documentação dentro do dashboard](assets/07-sobre-projeto.png) -->
 
 ---
 
@@ -598,7 +497,7 @@ A pergunta *"quem são os melhores clientes?"* tem uma resposta diferente da esp
 
 1. **Clone o repositório**
    ```bash
-   git clone https://github.com/[SEU-USUARIO]/rfm-simplificado.git
+   git clone https://github.com/edimilsonbraz/portfolio-analista-dados/tree/master/projetos.git
    cd rfm-simplificado
    ```
 
@@ -650,9 +549,9 @@ A pergunta *"quem são os melhores clientes?"* tem uma resposta diferente da esp
 
 **Edimilson de Sousa** — Analista de Dados
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/[SEU-USUARIO])
-[![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/[SEU-USUARIO])
-[![E-mail](https://img.shields.io/badge/E--mail-D14836?logo=gmail&logoColor=white)](mailto:[SEU-EMAIL])
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/[edimilsonbraz])
+[![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/[edimilsonbraz])
+[![E-mail](https://img.shields.io/badge/E--mail-D14836?logo=gmail&logoColor=white)](mailto:[edimilson.gt8@gmail.com])
 
 ---
 

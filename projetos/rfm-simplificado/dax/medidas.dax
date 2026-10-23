@@ -1,0 +1,104 @@
+// ============================================================
+// Colunas calculadas — DimCustomer
+// ============================================================
+
+Segmento Cliente =
+VAR ValorTotalCliente =
+    CALCULATE ( SUM ( FactInternetSales[SalesAmount] ) )
+RETURN
+    SWITCH (
+        TRUE (),
+        ValorTotalCliente >= 10000, "ALTO VALOR",
+        ValorTotalCliente >= 3000,  "MEDIO VALOR",
+        ValorTotalCliente < 3000,   "BAIXO VALOR",
+        "SEM COMPRAS"
+    )
+
+// TODO: colar aqui a coluna [Ordem Segmento] do Power BI
+
+// ============================================================
+// Medidas — tabela "# Medidas"
+// ============================================================
+
+Total Vendas = SUM ( FactInternetSales[SalesAmount] )
+
+Qtd Clientes = DISTINCTCOUNT ( FactInternetSales[CustomerKey] )
+
+Qtd Pedidos = DISTINCTCOUNT ( FactInternetSales[SalesOrderNumber] )
+
+Ticket Medio por Cliente =
+DIVIDE ( [Total Vendas], DISTINCTCOUNT ( FactInternetSales[CustomerKey] ) )
+
+Frequencia Media Pedidos =
+DIVIDE (
+    DISTINCTCOUNT ( FactInternetSales[SalesOrderNumber] ),
+    DISTINCTCOUNT ( FactInternetSales[CustomerKey] )
+)
+
+% Clientes Segmento =
+DIVIDE (
+    [Qtd Clientes],
+    CALCULATE (
+        [Qtd Clientes],
+        ALL ( DimCustomer[Segmento Cliente], DimCustomer[Ordem Segmento] )
+    )
+)
+
+% Participacao Segmento =
+DIVIDE (
+    [Total Vendas],
+    CALCULATE (
+        [Total Vendas],
+        ALL ( DimCustomer[Segmento Cliente], DimCustomer[Ordem Segmento] )
+    )
+)
+
+Ranking Cliente =
+RANKX ( ALL ( DimCustomer ), [Total Vendas], , DESC )
+
+Dias Sem Comprar =
+VAR DataReferencia =
+    CALCULATE ( MAX ( FactInternetSales[OrderDate] ), REMOVEFILTERS () )
+VAR UltimaCompra =
+    CALCULATE ( MAX ( FactInternetSales[OrderDate] ), REMOVEFILTERS ( DimDate ) )
+RETURN
+    IF ( NOT ISBLANK ( UltimaCompra ), DATEDIFF ( UltimaCompra, DataReferencia, DAY ) )
+
+Clientes Alto Valor em Risco =
+COUNTROWS (
+    FILTER (
+        DimCustomer,
+        DimCustomer[Segmento Cliente] = "ALTO VALOR"
+            && [Dias Sem Comprar] > 365
+    )
+)
+
+// TODO: colar aqui a medida [Qtd Pedidos Historico] do Power BI (usada abaixo)
+
+Clientes Recorrentes Baixo Valor =
+COUNTROWS (
+    FILTER (
+        DimCustomer,
+        DimCustomer[Segmento Cliente] = "BAIXO VALOR"
+            && [Qtd Pedidos Historico] >= 10
+    )
+)
+
+// ============================================================
+// Medidas de apoio
+// ============================================================
+
+Ticket Medio =
+DIVIDE ( [Total Vendas], DISTINCTCOUNT ( FactInternetSales[SalesOrderNumber] ) )
+
+Vendas Mes Anterior =
+CALCULATE ( [Total Vendas], DATEADD ( DimDate[FullDateAlternateKey], -1, MONTH ) )
+
+Crescimento % MoM =
+DIVIDE ( [Total Vendas] - [Vendas Mes Anterior], [Vendas Mes Anterior] )
+
+Vendas YTD =
+IF ( NOT ISBLANK ( [Total Vendas] ), TOTALYTD ( [Total Vendas], DimDate[FullDateAlternateKey] ) )
+
+Ranking Produto =
+RANKX ( ALL ( DimProduct[EnglishProductName] ), [Total Vendas], , DESC )
