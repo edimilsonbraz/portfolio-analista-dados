@@ -561,9 +561,9 @@ A pergunta *"quem são os melhores clientes?"* tem uma resposta diferente da esp
 
 **Edimilson de Sousa** — Analista de Dados
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/[edimilsonbraz])
-[![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/[edimilsonbraz])
-[![E-mail](https://img.shields.io/badge/E--mail-D14836?logo=gmail&logoColor=white)](mailto:[edimilson.gt8@gmail.com])
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/edimilsonbraz)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/edimilsonbraz)
+[![E-mail](https://img.shields.io/badge/E--mail-D14836?logo=gmail&logoColor=white)](mailto:edimilson.gt8@gmail.com)
 
 ---
 
