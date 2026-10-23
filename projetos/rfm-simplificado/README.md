@@ -231,6 +231,7 @@ RETURN
 ```
 
 **O que calcula:** classifica cada cliente pelo valor total que comprou. O `CALCULATE` faz a transição de contexto: transforma o cliente da linha em um filtro sobre a tabela de vendas.
+<br>
 **Onde é usada:** eixo do gráfico de distribuição, legenda do gráfico de áreas e do scatter, perfil por ocupação, renda por segmento e filtros das listas de ação.
 
 
@@ -243,6 +244,7 @@ Total Vendas = SUM ( FactInternetSales[SalesAmount] )
 ```
 
 **O que calcula:** a soma do valor vendido. É a base de quase todas as outras medidas.
+<br>
 **Onde é usada:** cartão "Total Vendas" (página 1), eixo Y do scatter (página 2), gráfico de áreas e todas as tabelas de clientes.
 
 ---
@@ -254,6 +256,7 @@ Qtd Clientes = DISTINCTCOUNT ( FactInternetSales[CustomerKey] )
 ```
 
 **O que calcula:** quantos clientes distintos compraram no contexto atual.
+<br>
 **Onde é usada:** cartão "Qtd Clientes" (página 1), gráfico de perfil por ocupação (página 2) e tabela de regras (página 4).
 
 ---
@@ -265,6 +268,7 @@ Qtd Pedidos = DISTINCTCOUNT ( FactInternetSales[SalesOrderNumber] )
 ```
 
 **O que calcula:** o número de pedidos distintos. Cada pedido tem várias linhas na fato (uma por item), por isso a contagem distinta.
+<br>
 **Onde é usada:** cartão "Qtd Pedidos" (página 1) e coluna da tabela de ranking (página 3).
 
 ---
@@ -277,6 +281,7 @@ DIVIDE ( [Total Vendas], DISTINCTCOUNT ( FactInternetSales[CustomerKey] ) )
 ```
 
 **O que calcula:** quanto cada cliente gasta, em média. O `DIVIDE` devolve vazio em vez de erro quando o divisor é zero.
+<br>
 **Onde é usada:** cartão "Ticket Médio Cliente" (página 1), valor de **R$ 1,59 mil**.
 
 ---
@@ -292,6 +297,7 @@ DIVIDE (
 ```
 
 **O que calcula:** quantos pedidos cada cliente faz, em média.
+<br>
 **Onde é usada:** cartão "Frequência Pedidos" (página 1, valor **1,50**) e eixo X do scatter (página 2), onde cada ponto é um cliente.
 
 ---
@@ -310,6 +316,7 @@ DIVIDE (
 ```
 
 **O que calcula:** a parcela da base de clientes que pertence a cada segmento.
+<br>
 **Onde é usada:** gráfico "Distribuição por segmento" (página 1) e tabela de regras (página 4).
 
 ---
@@ -328,6 +335,7 @@ DIVIDE (
 ```
 
 **O que calcula:** a parcela da receita total gerada por cada segmento.
+<br>
 **Onde é usada:** ao lado de `% Clientes Segmento` no gráfico "Distribuição por segmento". A comparação entre as duas barras é o principal achado do projeto.
 
 ---
@@ -340,6 +348,7 @@ RANKX ( ALL ( DimCustomer ), [Total Vendas], , DESC )
 ```
 
 **O que calcula:** a posição do cliente entre todos os clientes, do maior para o menor valor comprado.
+<br>
 **Onde é usada:** tabela "Top 10 clientes por valor total de compra" (página 3), com filtro Top N.
 
 ---
@@ -357,6 +366,7 @@ RETURN
 ```
 
 **O que calcula:** quantos dias se passaram entre a última compra do cliente e a última venda da base.
+<br>
 **Onde é usada:** coluna com semáforo (verde < 180, âmbar 180–364, vermelho ≥ 365) no ranking e na lista "Alto valor esfriando" (página 3).
 
 ---
@@ -375,6 +385,7 @@ COUNTROWS (
 ```
 
 **O que calcula:** quantos clientes de alto valor estão há mais de um ano sem comprar.
+<br>
 **Onde é usada:** cartão "Em Risco" (página 3), com formatação condicional em vermelho para valores acima de zero.
 
 ---
@@ -393,6 +404,7 @@ COUNTROWS (
 ```
 
 **O que calcula:** clientes de baixo valor que compraram 10 vezes ou mais: fiéis, mas de ticket pequeno.
+<br>
 **Onde é usada:** cartão "Recorrentes de Baixo Valor" (página 3), valor **35**.
 
 ---
