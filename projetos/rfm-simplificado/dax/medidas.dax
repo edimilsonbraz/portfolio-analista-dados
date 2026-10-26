@@ -14,7 +14,17 @@ RETURN
         "SEM COMPRAS"
     )
 
-// TODO: colar aqui a coluna [Ordem Segmento] do Power BI
+Ordem Segmento =
+VAR ValorTotalCliente =
+    CALCULATE ( SUM ( FactInternetSales[SalesAmount] ) )
+RETURN
+    SWITCH (
+        TRUE (),
+        ValorTotalCliente >= 10000, 1,
+        ValorTotalCliente >= 3000,  2,
+        ValorTotalCliente < 3000,   3,
+        4
+    )
 
 // ============================================================
 // Medidas — tabela "# Medidas"
@@ -73,7 +83,8 @@ COUNTROWS (
     )
 )
 
-// TODO: colar aqui a medida [Qtd Pedidos Historico] do Power BI (usada abaixo)
+Qtd Pedidos Historico =
+CALCULATE ( [Qtd Pedidos], REMOVEFILTERS ( DimDate ) )
 
 Clientes Recorrentes Baixo Valor =
 COUNTROWS (
