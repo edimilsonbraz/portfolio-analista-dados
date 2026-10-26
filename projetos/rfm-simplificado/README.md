@@ -4,6 +4,11 @@
 
 ### 🚀 Dashboard do projeto => <a href="https://app.powerbi.com/view?r=eyJrIjoiYzE4ZWVlZTMtYjA1Mi00ZTVmLTk5NGMtMDA3YWQ3OGI2NDNiIiwidCI6ImIyYjI2MzY2LWRhNmEtNGNkOS1hMzI4LTNmNWI3NzljZGI4MiJ9" target="_blank">aqui</a>
 
+> **⚡ Em resumo**
+> - **Achado:** 22% dos clientes (MÉDIO VALOR) geram 70% da receita; o valor da base está no meio, não no topo.
+> - **Recomendação:** concentrar a campanha de fidelidade nos 4.087 clientes de MÉDIO VALOR.
+> - **Ação imediata:** reativar 9 clientes de ALTO VALOR que estão esfriando e somam R$ 97 mil.
+
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-2022-CC2927?logo=microsoftsqlserver&logoColor=white)
 ![T-SQL](https://img.shields.io/badge/T--SQL-Consultas-CC2927)
 ![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?logo=powerbi&logoColor=black)
@@ -184,6 +189,15 @@ ORDER BY Receita DESC;
 SELECT SUM(SalesAmount) AS TotalVendas
 FROM FactInternetSales;
 ```
+
+**SQL × DAX por segmento:** a consulta de distribuição e as medidas do Power BI chegam aos mesmos números.
+
+| Segmento | Clientes (SQL) | Clientes (DAX) | Receita (SQL) | Receita (DAX) | Confere |
+|---|---:|---:|---:|---:|:---:|
+| ALTO VALOR | 29 | 29 | 339.633,42 | 339.633 | ✅ |
+| MÉDIO VALOR | 4.087 | 4.087 | 20.461.748,29 | 20.461.748 | ✅ |
+| BAIXO VALOR | 14.368 | 14.368 | 8.557.295,51 | 8.557.296 | ✅ |
+| **Total** | **18.484** | **18.484** | **29.358.677,22** | **29.358.677** | ✅ |
 
 > **![Resultado da consulta de segmentação no SQL Server](assets/03-sql-consulta-principal.png)**
 >
@@ -511,8 +525,9 @@ A pergunta *"quem são os melhores clientes?"* tem uma resposta diferente da esp
 
 1. **Clone o repositório**
    ```bash
-   git clone https://github.com/edimilsonbraz/portfolio-analista-dados/tree/master/projetos.git
-   cd rfm-simplificado
+   git clone https://github.com/edimilsonbraz/portfolio-analista-dados.git
+   cd portfolio-analista-dados/projetos/rfm-simplificado
+
    ```
 
 2. **Restaure o banco** no SSMS: botão direito em *Bancos de Dados* → *Restaurar Banco de Dados* → selecione `AdventureWorksDW2022.bak`.
