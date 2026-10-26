@@ -2,6 +2,8 @@
 
 > Segmentação de **18.484 clientes** e **R$ 29,36 milhões** em vendas online da AdventureWorks em ALTO, MÉDIO e BAIXO VALOR, para direcionar a campanha de fidelidade do Marketing.
 
+### 🚀 Dashboard do projeto => <a href="https://app.powerbi.com/view?r=eyJrIjoiYzE4ZWVlZTMtYjA1Mi00ZTVmLTk5NGMtMDA3YWQ3OGI2NDNiIiwidCI6ImIyYjI2MzY2LWRhNmEtNGNkOS1hMzI4LTNmNWI3NzljZGI4MiJ9" target="_blank">aqui</a>
+
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-2022-CC2927?logo=microsoftsqlserver&logoColor=white)
 ![T-SQL](https://img.shields.io/badge/T--SQL-Consultas-CC2927)
 ![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?logo=powerbi&logoColor=black)
