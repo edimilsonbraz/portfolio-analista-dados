@@ -12,8 +12,6 @@ Olá! Sou Analista de Dados em formação, com foco em Power BI, DAX, Python e a
 ## PROJETOS:
 📁 [Análise de Vendas loja x online](projetos/analise-vendas-loja-vs-online)
 
-📁 [Análise de Produção](projetos/dashboard-producao-industrial)
-
 📁 [Marketplace review](projetos/marketplace-review-intelligence)
 
 📁 [RFM Simplificado](projetos/rfm-simplificado)
