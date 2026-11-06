@@ -172,7 +172,7 @@ A base não trazia nome nem categoria do produto, só a URL. O notebook 03 extra
 | Atributo | Como foi obtido | Cobertura |
 |---|---|---|
 | `produto_id` | código `MLB` da URL | 202.783 de 202.785 (2 URLs fora do padrão) |
-| `nome_produto` | trecho descritivo da URL (slug) convertido em texto legível | 17.972 produtos |
+| `nome_produto` | trecho descritivo da URL (slug) convertido em texto legível | 17.973 produtos |
 | `categoria` | palavras-chave no slug, testadas da mais específica para a mais genérica | 20 categorias |
 
 > 💡 **Decisão de projeto:** a ordem das regras importa. "Escova Progressiva" é testada antes de "Kit Capilar" para que um kit de progressiva não caia na categoria errada. O dicionário passou por uma segunda versão depois de investigar as palavras mais frequentes em "Outros Cosméticos", que hoje concentra 5,6% das avaliações.
@@ -235,7 +235,7 @@ As tabelas são geradas em Python (notebook 05) e importadas no Power BI. Antes 
 | Tabela | Tipo | Linhas | Conteúdo |
 |---|---|---:|---|
 | `fato_reviews` | Fato | 202.785 | chaves, `rating`, `sentimento_score`, `qtd_palavras`, `review_curto`, `content` |
-| `dim_produto` | Dimensão | 17.972 | `nome_produto`, `categoria`, `product_url` |
+| `dim_produto` | Dimensão | 17.973 | `nome_produto`, `categoria`, `product_url` |
 | `dim_data` | Dimensão | 2.119 | dia, mês, ano, trimestre, semestre, dia da semana |
 | `dim_sentimento` | Dimensão | 3 | classificação, descrição, ordem de exibição, cor |
 
@@ -350,7 +350,7 @@ Antes de publicar, conferi cada KPI do dashboard contra os números do notebook.
 
 **5. Pontos de atenção.** Perfume/Fragrância (4,45; 80% de 5 estrelas) e Tintura/Matizador (4,56; 81%) têm as menores notas. Nas avaliações de 1 estrela, as palavras mais frequentes incluem "veio", "cheiro" e "parece", uma pista de reclamações sobre o produto recebido, que merece investigação.
 
-**6. A negatividade cresceu com a escala.** A proporção de avaliações negativas subiu de 2,5% em 2021 para 4,6% em 2024. Vale monitorar, lembrando que 2021 tem poucas avaliações para servir de base.
+**6. A negatividade cresceu com a escala.** A proporção de avaliações negativas subiu de 2,7% em 2021 para 4,8% em 2024. Vale monitorar, lembrando que 2021 tem poucas avaliações para servir de base.
 
 ---
 
