@@ -17,7 +17,7 @@ O que procuro em cada projeto é responder a uma pergunta de negócio real e ent
 **O que fiz:** segmentei 18.484 clientes com SQL (CTE e funções de janela), modelei em estrela no Power BI e validei cada número do DAX contra o SQL.
 **Resultado:** 22% dos clientes geram cerca de 70% da receita. A recomendação foi concentrar a campanha nesse grupo e reativar 9 clientes de alto valor que estavam esfriando.
 
-📁 [Ver projeto](projetos/rfm-simplificado) · 📊 [Dashboard](https://app.powerbi.com/view?r=eyJrIjoiYzE4ZWVlZTMtYjA1Mi00ZTVmLTk5NGMtMDA3YWQ3OGI2NDNiIiwidCI6ImIyYjI2MzY2LWRhNmEtNGNkOS1hMzI4LTNmNWI3NzljZGI4MiJ9)
+📁 [Ver projeto](projetos/rfm-simplificado) · 📊 [Dashboard](https://app.powerbi.com/view?r=eyJrIjoiZmQ2MjFhNzgtOGYzNC00ZmU4LWJjYzAtYTA1NzVmMDdmZjAwIiwidCI6ImIyYjI2MzY2LWRhNmEtNGNkOS1hMzI4LTNmNWI3NzljZGI4MiJ9)
 
 ---
 
