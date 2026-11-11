@@ -3,7 +3,7 @@
 > Segmentação de **18.484 clientes** e **US$ 29,36 milhões** em vendas online da AdventureWorks em ALTO, MÉDIO e BAIXO VALOR, para direcionar a campanha de fidelidade do Marketing.
 
 
-### 🚀 Dashboard do projeto => <a href="https://app.powerbi.com/view?r=eyJrIjoiYzE4ZWVlZTMtYjA1Mi00ZTVmLTk5NGMtMDA3YWQ3OGI2NDNiIiwidCI6ImIyYjI2MzY2LWRhNmEtNGNkOS1hMzI4LTNmNWI3NzljZGI4MiJ9" target="_blank">aqui</a>
+### 🚀 Dashboard do projeto => <a href="https://app.powerbi.com/view?r=eyJrIjoiZmQ2MjFhNzgtOGYzNC00ZmU4LWJjYzAtYTA1NzVmMDdmZjAwIiwidCI6ImIyYjI2MzY2LWRhNmEtNGNkOS1hMzI4LTNmNWI3NzljZGI4MiJ9" target="_blank">aqui</a>
 
 > **⚡ Em resumo**
 > - **Achado:** 22% dos clientes (MÉDIO VALOR) geram 70% da receita; o valor da base está no meio, não no topo.
