@@ -1,13 +1,14 @@
 # RFM Simplificado — Segmentação de Clientes por Valor de Compra
 
-> Segmentação de **18.484 clientes** e **R$ 29,36 milhões** em vendas online da AdventureWorks em ALTO, MÉDIO e BAIXO VALOR, para direcionar a campanha de fidelidade do Marketing.
+> Segmentação de **18.484 clientes** e **US$ 29,36 milhões** em vendas online da AdventureWorks em ALTO, MÉDIO e BAIXO VALOR, para direcionar a campanha de fidelidade do Marketing.
+
 
 ### 🚀 Dashboard do projeto => <a href="https://app.powerbi.com/view?r=eyJrIjoiYzE4ZWVlZTMtYjA1Mi00ZTVmLTk5NGMtMDA3YWQ3OGI2NDNiIiwidCI6ImIyYjI2MzY2LWRhNmEtNGNkOS1hMzI4LTNmNWI3NzljZGI4MiJ9" target="_blank">aqui</a>
 
 > **⚡ Em resumo**
 > - **Achado:** 22% dos clientes (MÉDIO VALOR) geram 70% da receita; o valor da base está no meio, não no topo.
 > - **Recomendação:** concentrar a campanha de fidelidade nos 4.087 clientes de MÉDIO VALOR.
-> - **Ação imediata:** reativar 9 clientes de ALTO VALOR que estão esfriando e somam R$ 97 mil.
+> - **Ação imediata:** reativar 9 clientes de ALTO VALOR que estão esfriando e somam US$ 97 mil.
 
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-2022-CC2927?logo=microsoftsqlserver&logoColor=white)
 ![T-SQL](https://img.shields.io/badge/T--SQL-Consultas-CC2927)
@@ -59,9 +60,9 @@ O pedido foi deliberadamente enxuto: não um RFM completo, mas um **ponto de par
 
 | Segmento | Regra (valor total comprado pelo cliente) |
 |---|---|
-| **ALTO VALOR** | ≥ R$ 10.000 |
-| **MÉDIO VALOR** | R$ 3.000 a R$ 9.999 |
-| **BAIXO VALOR** | < R$ 3.000 |
+| **ALTO VALOR** | ≥ US$ 10.000 |
+| **MÉDIO VALOR** | US$ 3.000 a US$ 9.999 |
+| **BAIXO VALOR** | < US$ 3.000 |
 
 2. **Medir o peso de cada segmento** na base de clientes e na receita.
 3. **Identificar quem priorizar**: os maiores clientes, os de alto valor que começam a esfriar e outros grupos acionáveis.
@@ -86,7 +87,7 @@ O pedido foi deliberadamente enxuto: não um RFM completo, mas um **ponto de par
 
 ## 🗄️ Estrutura do Banco de Dados
 
-Base: **AdventureWorksDW2022**, um data warehouse de exemplo da Microsoft em modelo dimensional. As vendas vão de **dezembro de 2010 a janeiro de 2014**.
+Base: **AdventureWorksDW2022**, um data warehouse de exemplo da Microsoft em modelo dimensional. As vendas vão de **dezembro de 2010 a janeiro de 2014**. Os valores estão em **dólar (US$)**, a moeda original da base.
 
 | Tabela | Tipo | Grão | Colunas usadas |
 |---|---|---|---|
@@ -145,7 +146,7 @@ SELECT
     *,
     CASE
         WHEN ValorTotal >= 10000 THEN 'ALTO VALOR'
-        WHEN ValorTotal >= 3000  THEN 'MEDIO VALOR'
+        WHEN ValorTotal >= 3000  THEN N'MÉDIO VALOR'
         ELSE 'BAIXO VALOR'
     END AS Segmento
 FROM ResumoCliente
@@ -155,6 +156,7 @@ ORDER BY ValorTotal DESC;
 - A **CTE** evita repetir o `SUM` dentro do `CASE`: o SQL Server não aceita usar o apelido `ValorTotal` na mesma linha em que é criado.
 - O **`COUNT(DISTINCT SalesOrderNumber)`** impede que os vários itens de um pedido inflem a frequência.
 - A **ordem do `CASE`** importa: o teste de 10.000 vem antes do de 3.000.
+- O prefixo **`N`** em `N'MÉDIO VALOR'` marca o texto como Unicode, para o acento ser gravado corretamente.
 
 ### Distribuição por segmento
 
@@ -164,7 +166,7 @@ WITH Segmentos AS (
         CustomerKey,
         CASE
             WHEN SUM(SalesAmount) >= 10000 THEN 'ALTO VALOR'
-            WHEN SUM(SalesAmount) >= 3000  THEN 'MEDIO VALOR'
+            WHEN SUM(SalesAmount) >= 3000  THEN N'MÉDIO VALOR'
             ELSE 'BAIXO VALOR'
         END AS Segmento,
         SUM(SalesAmount) AS ValorTotal
@@ -185,7 +187,7 @@ ORDER BY Receita DESC;
 ### Validação das medidas DAX
 
 ```sql
--- Deve bater com a medida [Total Vendas] sem filtros: R$ 29.358.677,22
+-- Deve bater com a medida [Total Vendas] sem filtros: US$ 29.358.677,22
 SELECT SUM(SalesAmount) AS TotalVendas
 FROM FactInternetSales;
 ```
@@ -239,14 +241,16 @@ VAR ValorTotalCliente =
 RETURN
     SWITCH (
         TRUE (),
+        ISBLANK ( ValorTotalCliente ), "SEM COMPRAS",
         ValorTotalCliente >= 10000, "ALTO VALOR",
-        ValorTotalCliente >= 3000,  "MEDIO VALOR",
-        ValorTotalCliente < 3000,   "BAIXO VALOR",
-        "SEM COMPRAS"
+        ValorTotalCliente >= 3000,  "MÉDIO VALOR",
+        "BAIXO VALOR"
     )
 ```
 
 **O que calcula:** classifica cada cliente pelo valor total que comprou. O `CALCULATE` faz a transição de contexto: transforma o cliente da linha em um filtro sobre a tabela de vendas.
+
+> 💡 **Por que o `ISBLANK` vem primeiro:** um cliente sem vendas tem total **BLANK**, e no DAX `BLANK < 3000` é verdadeiro, porque o BLANK é tratado como zero na comparação. Na primeira versão, o teste de "SEM COMPRAS" ficava por último e nunca era alcançado: esse cliente cairia em BAIXO VALOR. Nesta base não houve impacto (os 18.484 clientes compraram), mas a regra agora está correta para qualquer carga futura. A coluna `Ordem Segmento` segue a mesma lógica.
 <br>
 **Onde é usada:** eixo do gráfico de distribuição, legenda do gráfico de áreas e do scatter, perfil por ocupação, renda por segmento e filtros das listas de ação.
 
@@ -298,7 +302,7 @@ DIVIDE ( [Total Vendas], DISTINCTCOUNT ( FactInternetSales[CustomerKey] ) )
 
 **O que calcula:** quanto cada cliente gasta, em média. O `DIVIDE` devolve vazio em vez de erro quando o divisor é zero.
 <br>
-**Onde é usada:** cartão "Ticket Médio Cliente" (página 1), valor de **R$ 1,59 mil**.
+**Onde é usada:** cartão "Ticket Médio Cliente" (página 1), valor de **US$ 1.588,33**.
 
 ---
 
@@ -480,17 +484,17 @@ O Print 1, no topo deste README, mostra esta página.
 
 | Segmento | Clientes | % clientes | Receita | % receita |
 |---|---:|---:|---:|---:|
-| ALTO VALOR | 29 | 0,2% | R$ 339.633 | 1,2% |
-| MÉDIO VALOR | 4.087 | 22,1% | R$ 20.461.748 | **69,7%** |
-| BAIXO VALOR | 14.368 | **77,7%** | R$ 8.557.296 | 29,1% |
-| **Total** | **18.484** | **100%** | **R$ 29.358.677** | **100%** |
+| ALTO VALOR | 29 | 0,2% | US$ 339.633 | 1,2% |
+| MÉDIO VALOR | 4.087 | 22,1% | US$ 20.461.748 | **69,7%** |
+| BAIXO VALOR | 14.368 | **77,7%** | US$ 8.557.296 | 29,1% |
+| **Total** | **18.484** | **100%** | **US$ 29.358.677** | **100%** |
 
 1. **🏆 O MÉDIO VALOR é o motor do negócio.** Apenas **22% dos clientes geram cerca de 70% da receita**.
 2. **📉 O BAIXO VALOR é a maioria, mas pesa pouco.** **78% dos clientes** respondem por só **29% da receita**.
 3. **🔍 O ALTO VALOR é minúsculo com o corte atual.** São **29 clientes** (0,2% da base) e 1,2% da receita.
-4. **✅ Nenhum cliente de alto valor está em risco, mas 9 estão esfriando.** Nenhum passou de 365 dias sem comprar; o maior intervalo é de **258 dias**. Nove dos 29 estão entre 188 e 258 dias e somam **R$ 97.412**, cerca de **29% da receita do segmento**.
-5. **🔁 Existe um grupo fiel de ticket baixo.** **35 clientes** de BAIXO VALOR fizeram **721 pedidos**, mas geraram só **R$ 34.501** (ticket médio de **R$ 47,85**).
-6. **🛒 O cliente típico compra pouco e raramente.** Ticket médio de **R$ 1,59 mil** por cliente e **1,5 pedido** em média.
+4. **✅ Nenhum cliente de alto valor está em risco, mas 9 estão esfriando.** Nenhum passou de 365 dias sem comprar; o maior intervalo é de **258 dias**. Nove dos 29 estão entre 188 e 258 dias e somam **US$ 97.412**, cerca de **29% da receita do segmento**.
+5. **🔁 Existe um grupo fiel de ticket baixo.** **35 clientes** de BAIXO VALOR fizeram **721 pedidos**, mas geraram só **US$ 34.501** (ticket médio de **US$ 47,85**).
+6. **🛒 O cliente típico compra pouco e raramente.** Ticket médio de **US$ 1.588,33** por cliente e **1,5 pedido** em média.
 
 ---
 
@@ -500,10 +504,10 @@ A pergunta *"quem são os melhores clientes?"* tem uma resposta diferente da esp
 
 **Recomendações ao Marketing, por prioridade:**
 
-1. **Fidelizar o MÉDIO VALOR (prioridade alta).** Programa de pontos ou benefícios progressivos para os 4.087 clientes que geram R$ 20,5 milhões. Uma retenção pequena aqui tem o maior impacto absoluto.
-2. **Reativar preventivamente os 9 de alto valor esfriando (prioridade alta, custo baixo).** Contato personalizado antes que passem de um ano sem comprar. São R$ 97 mil em risco potencial concentrados em 9 nomes.
-3. **Recalibrar o corte de ALTO VALOR (decisão de negócio).** Com R$ 10 mil, só 29 clientes entram no grupo. Avaliar um corte relativo (top 5% ou top 10%) para criar um segmento VIP com tamanho útil.
-4. **Cross-sell de baixo custo para os recorrentes de ticket baixo (prioridade baixa).** Os 35 clientes fiéis aceitam ofertas por e-mail, mas o ganho potencial é pequeno (a receita atual do grupo é de R$ 34,5 mil).
+1. **Fidelizar o MÉDIO VALOR (prioridade alta).** Programa de pontos ou benefícios progressivos para os 4.087 clientes que geram US$ 20,5 milhões. Uma retenção pequena aqui tem o maior impacto absoluto.
+2. **Reativar preventivamente os 9 de alto valor esfriando (prioridade alta, custo baixo).** Contato personalizado antes que passem de um ano sem comprar. São US$ 97 mil em risco potencial concentrados em 9 nomes.
+3. **Recalibrar o corte de ALTO VALOR (decisão de negócio).** Com US$ 10 mil, só 29 clientes entram no grupo. Avaliar um corte relativo (top 5% ou top 10%) para criar um segmento VIP com tamanho útil.
+4. **Cross-sell de baixo custo para os recorrentes de ticket baixo (prioridade baixa).** Os 35 clientes fiéis aceitam ofertas por e-mail, mas o ganho potencial é pequeno (a receita atual do grupo é de US$ 34,5 mil).
 
 **Limitações a considerar:**
 - O segmento usa o histórico completo; filtrar um ano não reclassifica o cliente.
@@ -542,7 +546,7 @@ A pergunta *"quem são os melhores clientes?"* tem uma resposta diferente da esp
 
 5. **Aponte para o seu servidor:** *Página Inicial → Transformar dados → Configurações da fonte de dados → Alterar Fonte*. Informe o servidor no formato `<SEU_SERVIDOR>,1433` (vírgula antes da porta) e o banco `AdventureWorksDW2022`. Use o modo **Import**.
 
-6. **Atualize** os dados (*Página Inicial → Atualizar*) e confira se o cartão "Total Vendas" mostra **R$ 29,36 Mi**.
+6. **Atualize** os dados (*Página Inicial → Atualizar*) e confira se o cartão "Total Vendas" mostra **$29,36 Mi**.
 
 ### Estrutura do repositório
 

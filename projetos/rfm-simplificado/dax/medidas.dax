@@ -8,10 +8,10 @@ VAR ValorTotalCliente =
 RETURN
     SWITCH (
         TRUE (),
+        ISBLANK ( ValorTotalCliente ), "SEM COMPRAS",
         ValorTotalCliente >= 10000, "ALTO VALOR",
-        ValorTotalCliente >= 3000,  "MEDIO VALOR",
-        ValorTotalCliente < 3000,   "BAIXO VALOR",
-        "SEM COMPRAS"
+        ValorTotalCliente >= 3000,  "MÉDIO VALOR",
+        "BAIXO VALOR"
     )
 
 Ordem Segmento =
@@ -20,10 +20,10 @@ VAR ValorTotalCliente =
 RETURN
     SWITCH (
         TRUE (),
+        ISBLANK ( ValorTotalCliente ), 4,
         ValorTotalCliente >= 10000, 1,
         ValorTotalCliente >= 3000,  2,
-        ValorTotalCliente < 3000,   3,
-        4
+        3
     )
 
 // ============================================================

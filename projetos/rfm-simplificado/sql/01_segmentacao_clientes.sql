@@ -20,7 +20,7 @@ SELECT
     *,
     CASE
         WHEN ValorTotal >= 10000 THEN 'ALTO VALOR'
-        WHEN ValorTotal >= 3000  THEN 'MEDIO VALOR'
+        WHEN ValorTotal >= 3000  THEN N'MÉDIO VALOR'
         ELSE 'BAIXO VALOR'
     END AS Segmento
 FROM ResumoCliente
